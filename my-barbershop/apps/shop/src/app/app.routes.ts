@@ -2,24 +2,13 @@ import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
   {
-    path: '',
-    redirectTo: 'products',
-    pathMatch: 'full',
-  },
-  {
-    path: 'products',
-    loadChildren: () =>
-      import('@org/shop/feature-products').then(m => m.featureProductsRoutes),
-  },
-  {
-    path: 'products',
-    loadChildren: () =>
-      import('@org/shop/feature-product-detail').then(
-        m => m.featureProductDetailRoutes
-      ),
-  },
-  {
-    path: '**',
-    redirectTo: 'products',
+    path: 'auth',
+    loadComponent: () => import('@core/layout/auth/auth.layout').then(m => m.AuthLayout),
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('@domain/auth/auth.routes').then(m => m.AUTH_ROUTES),
+      },
+    ],
   },
 ];
