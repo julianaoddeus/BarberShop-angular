@@ -1,2 +1,2 @@
 # BarberShop
-projeto desenvolvido com angular
+projeto desenvolvido com angular e supabase
